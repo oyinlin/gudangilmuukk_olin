@@ -49,6 +49,9 @@ $row_kategori = mysqli_fetch_assoc($query_kategori);
         color: purple;
         font-weight: bold;
     }
+    body{
+        background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
+    }
 </style>
 <div class="card">
     <div class="card body">

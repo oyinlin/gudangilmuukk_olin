@@ -37,6 +37,11 @@ $row_kategori = mysqli_fetch_assoc($query_kategori);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Kategori</title>
+    <style>
+          body{
+        background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
+    }
+    </style>
 </head>
 <body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"

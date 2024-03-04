@@ -36,7 +36,7 @@ $buku = mysqli_fetch_all($result, MYSQLI_ASSOC);
     <link href="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous" rel="stylesheet">
     <style>
         body {
-    background-image: url('../../assets/background.png');
+            background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
     background-size: cover;
     background-position: center;
     margin: 0; /* Menetapkan margin menjadi 0 */
@@ -85,24 +85,22 @@ $buku = mysqli_fetch_all($result, MYSQLI_ASSOC);
     </style>
 </head>
 <body>
-<a class="navbar-brand">
-        <img src="../../assets/lgoo.png" alt="logo" width="150px">
-    </a>
-    <ul class="position-absolute top-0 end-0 mt-2 p-2">
+<body class="container-fluid h-100 p-0 m-0">
+    <header class="row w-100 z-3  justify-content-between align-items-center py-2 p-0 m-0" style="background-color: #A5CEE8">
+      <img class="col-2" style="width: 150px;" src="../../assets/logo.png" alt="">
+      <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" class="col-lg-4 col-md-6 col-sm-8 mx-auto mt-2 ">
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name="keyword" placeholder="Cari Buku.." aria-label="Keyword Pencarian" aria-describedby="basic-addon1">
+        <button class="btn btn-outline-secondary" type="submit" name="search">Cari</button>
+    </div>
+</form>
+    </header>
+    <ul class="position-absolute top-5 end-0 mt-5 p-5">
     <a href="../dashboardadmin.php" class="btn btn-primary back-btn"><i class="fas fa-arrow-left me-2"></i>Kembali</a>
     </ul>
         <!-- Content -->
         <div class="p-4 mt-4">
-            <h2 class="title">Daftar Buku</h2>
-            
-            <!-- Form pencarian -->
-            <form action="" method="post" class="mt-3">
-                <div class="input-group d-flex justify-content-end mb-3">
-                    <input class="border p-2 rounded rounded-end-0 bg-tertiary" type="text" name="keyword" id="keyword" placeholder="cari data buku...">
-                    <button class="border border-start-0 bg-light rounded rounded-start-0" type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
-                </div>
-            </form>
-            
+            <h2 class="title" style="color: #000;">Daftar Buku</h2>
             <!-- Card buku -->
             <div class="layout-card-custom">
                 <?php foreach ($buku as $item) : ?>

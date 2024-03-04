@@ -44,6 +44,9 @@ $row_kategori = mysqli_fetch_assoc($query_kategori);
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <h1 class="mt-4">HAPUS KATEGORI</h1>
 <style>
+    body{
+        background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
+    }
     .col-md-2 {
         font-size: 30px;
         color: purple;

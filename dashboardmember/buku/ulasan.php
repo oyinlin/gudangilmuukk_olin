@@ -1,18 +1,22 @@
 <?php
 require_once('../../backend/config.php');
 
+// Pastikan user sudah login
 session_start();
 if (!isset($_SESSION["user_id"])) {
     header("Location: ../../login.php");
     exit;
 }
 
+// Ambil ID buku yang akan dilihat detailnya dari parameter URL
 if (!isset($_GET['id'])) {
+    // Redirect jika parameter id tidak ditemukan
     header("Location: daftarbuku.php");
     exit;
 }
 $id_buku = $_GET['id'];
 
+// Ambil data buku berdasarkan ID
 $query_buku = "SELECT * FROM buku WHERE id = ?";
 $stmt_buku = $conn->prepare($query_buku);
 $stmt_buku->bind_param("i", $id_buku);
@@ -20,6 +24,7 @@ $stmt_buku->execute();
 $result_buku = $stmt_buku->get_result();
 $buku = $result_buku->fetch_assoc();
 
+// Ambil rata-rata rating buku
 $query_avg_rating = "SELECT AVG(rating) AS avg_rating FROM ulasan WHERE bukuid = ?";
 $stmt_avg_rating = $conn->prepare($query_avg_rating);
 $stmt_avg_rating->bind_param("i", $id_buku);
@@ -28,7 +33,8 @@ $result_avg_rating = $stmt_avg_rating->get_result();
 $row_avg_rating = $result_avg_rating->fetch_assoc();
 $avg_rating = $row_avg_rating['avg_rating'];
 
-$query_ulasan = "SELECT * FROM ulasan WHERE bukuid = ?";
+// Ambil ulasan buku beserta nama pengguna (username)
+$query_ulasan = "SELECT ulasan.*, user.username FROM ulasan INNER JOIN user ON ulasan.userid = user.id WHERE ulasan.bukuid = ?";
 $stmt_ulasan = $conn->prepare($query_ulasan);
 $stmt_ulasan->bind_param("i", $id_buku);
 $stmt_ulasan->execute();
@@ -46,7 +52,7 @@ $ulasan = $result_ulasan->fetch_all(MYSQLI_ASSOC);
     <link href="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous" rel="stylesheet">
     <style>
         body {
-            background-image: url('../../assets/background.jpg');
+            background-image: url("../../assets/bckground.png");
             height: 100vh;
         }
         .container {
@@ -83,7 +89,7 @@ $ulasan = $result_ulasan->fetch_all(MYSQLI_ASSOC);
 </head>
 <body>
 <div class="container mt-4">
-    <h2>Daftar Ulasan Buku</h2>
+    <h2 style="text-shadow: 0 0 5px red; color:black">Daftar Ulasan Buku</h2>
     <div class="row">
         <div class="col-md-4">
             <div class="img-container">
@@ -105,7 +111,7 @@ $ulasan = $result_ulasan->fetch_all(MYSQLI_ASSOC);
                 <?php foreach ($ulasan as $review) : ?>
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Ulasan oleh User ID: <?= $review['userid']; ?></h5>
+                            <h5 class="card-title">Ulasan oleh <?= $review['username']; ?></h5>
                             <p class="card-text">Rating: <?= $review['rating']; ?></p>
                             <p class="card-text">Ulasan: <?= $review['ulasan']; ?></p>
                         </div>
@@ -114,8 +120,8 @@ $ulasan = $result_ulasan->fetch_all(MYSQLI_ASSOC);
             </div>
         </div>
         <div class="mb-3 text-end">                
-            <a href="../dashboardmember.php" class="btn btn-danger me-2">Kembali</a>
-        </div>
+                <a href="../dashboardmember.php" class="btn btn-danger me-2">Kembali</a>
+            </div>
     </div>
 </div>
 </body>

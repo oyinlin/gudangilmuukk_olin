@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous" rel="stylesheet">
     <style>
 body {
-    background-image: url('../../assets/background.png');
+    background-image: url('../../assets/background.jpg');
     background-size: cover;
     background-position: center;
     margin: 0; /* Menetapkan margin menjadi 0 */

@@ -30,10 +30,10 @@ $kategori = queryReadData("SELECT * FROM kategoribuku");
     <title>Tambah Barang || Admin</title>
     <style>
         body {
-            background-color: #f8f9fa;
+            background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
         }
         .card {
-            background-color: grey;
+            background-color: #a5cee8;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }

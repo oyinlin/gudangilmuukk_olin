@@ -24,6 +24,9 @@ if(!isset($_SESSION["user_id"]) ) {
     color: purple;
     font-weight: bold; 
 }
+body{
+        background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
+    }
 </style>
 <div class="card">
       <div class="card body">

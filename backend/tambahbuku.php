@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $ext = pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION);
             $gambar_nama = $nama_file . '_' . $kode_unik . '.' . $ext;
             $gambar_tmp = $_FILES["gambar"]["tmp_name"];
-            $gambar_destinasi = "C:/xampp/htdocs/ukkdipa/ukkdipa/imgDB/" . $gambar_nama;
+            $gambar_destinasi = "C:/xampp2/htdocs/eperpusukk_olin/imgDB/" . $gambar_nama;
         } else {
             session_start();
             $_SESSION['error_message'] = "Error: Terjadi masalah saat mengunggah gambar.";

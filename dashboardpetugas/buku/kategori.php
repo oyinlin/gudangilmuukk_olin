@@ -15,6 +15,11 @@ if(!isset($_SESSION["user_id"]) ) {
   <link rel="stylesheet" href="../../style.css">
   <title>Document</title>  
 </head>
+<style>
+  body{
+    background: linear-gradient(90deg, #ffffff 0%, #a5cee8 100%);
+  }
+</style>
 <body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <h1 class="mt-4">KATEGORI BUKU</h1>
